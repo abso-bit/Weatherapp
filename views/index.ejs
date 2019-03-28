@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="https://use.fontawesome.com/a7ec7986bf.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+
+        <div class="offset-2 col-8">
+          <form action="/add-city" method="POST" class="form-inline">
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="city">Ville</label>
+              <input type="text" class="form-control" name="city" id="city" placeholder="Paris, Lyon ..">
+            </div>
+            <button type="submit" class="btn btn-warning mb-2">Enregistrer</button>
+          </form>
+        </div>
+
+        <div class="offset-2 col-8">
+          <ul class="list-group">
+            <%
+            for(var i=0; i<cityList.length; i++) {
+            %>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-3 city-name" >
+                    <%=cityList[i].name%>
+                  </div>
+
+                  <div class="offset-2 col-6">
+                    <img src="<%=cityList[i].icon%>"> <%=cityList[i].desc%> <span class="badge badge-warning"><%=cityList[i].temp_max%></span> <span class="badge badge-secondary"><%=cityList[i].temp_min%></span>
+                  </div>
+
+                  <div class="col-1 city-delete">
+                    <a href="/delete-city?id=<%=cityList[i].id%>"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+              </li>
+            <%
+            }
+            %>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </body>
+</html>
